@@ -106,3 +106,10 @@ a {
 Code for gradient divider:
 linear-gradient(to right, rgba(var(--dark-text-accent-rgb), 0) 0%, rgba(var(--dark-text-accent-rgb), 1) 50%, rgba(var(--dark-text-accent-rgb), 0) 100%);
 */
+
+.project {
+  margin: 0 auto;
+  padding: 10px 0;
+  margin-bottom: -2px;
+  color: var(--seafarer-text);
+}
