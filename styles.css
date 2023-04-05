@@ -38,13 +38,13 @@ html, body {
   opacity: 0.5;
 }
 
-.hello {
+.header1 {
   margin: 0 auto;
   padding: 10px 0;
   margin-bottom: -2px;
   color: var(--seafarer-text);
 }
-.hellop {
+.text {
   font-family: 'Inter', sans-serif;
   color: var(--seafarer-text);
   opacity: 0.9;
