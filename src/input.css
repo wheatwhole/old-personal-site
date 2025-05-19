@@ -5,7 +5,7 @@
   --bg-color: #FFFFFF; /* dark: #1e272e */
   --main-color: #40d672;
   --text-color: #282828; /* text light isnt really text light, its text in Light mode */
-  --sub-color: #d1d1d1; /* for sub text */
+  --sub-color: #00000067; /* for sub text */
   --elevated: #e3e3e3; /* for buttons and tags */
   --color-allgood: #40d672;
   --color-warning: #FFD63A;
@@ -54,9 +54,13 @@ body {
 }
 
 .bio-text {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.5rem;
   text-align: center;
+}
+
+.sub-text {
+  color: var(--sub-color)
 }
 .content {
   width: 100%;
@@ -144,7 +148,7 @@ body {
   background-color: var(--elevated);
   border-radius: 5px;
   font-weight: 580;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   font-family: "IBM Sans Mono", monospace;
   width: fit-content;
   color: white;
@@ -182,9 +186,7 @@ body {
   background-color: #71C0BB;
 }
 
-
-
-
-
-
+.contact {
+  font-size: 13px;
+}
 
