@@ -3,8 +3,10 @@
 
 :root {
   --bg-color: #FFFFFF; /* dark: #1e272e */
+  --bg-color-beige: #FAF6E9;
   --main-color: #40d672;
   --text-color: #282828; /* text light isnt really text light, its text in Light mode */
+  --nav-bg: #101010;
   --sub-color: #00000067; /* for sub text */
   --elevated: #e3e3e3; /* for buttons and tags */
   --color-allgood: #40d672;
@@ -25,12 +27,19 @@ body {
     overflow-y: auto;
     width: 100vw;
     height: 96vh;
-    background-image: white;
     background-size: cover;
     font-family: Noto Sans Mono Variable,Noto Sans Mono,monospace;
     cursor: default;
       -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin:0;
+  padding:0;
+  background-color: var(--bg-color-beige);
+  background-size: 15px 15px;
+  background-image:
+    linear-gradient(to right, rgba(128, 128, 128, 0.123) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 128, 128, 0.123) 1px, transparent 1px);
+
 }
 
 .body-text {
@@ -47,6 +56,7 @@ body {
 
 .welcome {
   text-align: center;
+  color: var(--main-color);
 }
 
 .bullet-title {
@@ -65,14 +75,15 @@ body {
 .content {
   width: 100%;
   height: 100%;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: safe center;
   align-items: center;
-}
+  overscroll-behavior-y: none;
+ }
 
 .wheatwhole-wrapper {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: safe center;
@@ -86,15 +97,14 @@ body {
   flex-direction: column;
   justify-content: safe center;
   align-items: center;
-  background-color: var(--bg-color);
   gap: 5px;
   padding-left: 5rem;
   padding-right: 5rem;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
   border-radius: 0.5rem;
-  width: 50%;
-  overflow: hidden;
+  width: 30%;
+  height: 100vwh;
 }
 
 @media only screen and (max-width: 600px) {
@@ -103,8 +113,25 @@ body {
   }
 }
 
+@media only screen and (max-height: 300px) {
+  .me {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-height: 300px) {
+  .h300::after {
+    content: " (scroll)";
+  }
+}
+
 .divider {
-  border-top: var(--text-color);
+  border-top: var(--sub-color);
+  color: var(--sub-color);
+  background-color: var(--sub-color);
+  border: 1px;
+  display: block;
+  height: 1px;
   width: 70%;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -113,12 +140,15 @@ body {
 .me > .pfp {
   min-width: 150px;
   min-height: 150px;
-  border-radius: 15px;
+  border-radius: 360px;
   overflow: hidden;
+  background-image: url(images/pfp.webp);
+  background-size:cover;
 }
 
 .me > .pfp > img {
   width: 150px;
+  height: 150px;
 }
 
 .likes-wrapper {
@@ -186,7 +216,32 @@ body {
   background-color: #71C0BB;
 }
 
-.contact {
+.contact-container {
   font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.contact-container > .sub-text {
+  text-align: center;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vh;
+  position: fixed;
+  height: 5rem;
+  bottom: 1rem;
+  width: 100vw;
+}
+
+.sidebar {
+  height: 100%;
+  width: 50rem;
+  border-radius: 1rem;
+  background-color: var(--nav-bg);
+}
