@@ -1,3 +1,4 @@
+document.title = "@wheatwhole"
 async function titleEffect() {
   function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -36,6 +37,8 @@ async function titleEffect() {
         await typeAnimation(false, "rentry.org/wheatsecret", 250);
         await sleep(10000);
         await typeAnimation(true, "rentry.org/wheatsecret", 250);
+        await sleep(500);
+        await typeAnimation(false, "wheatwhole", 250);
         await sleep(500);
         
       } else {

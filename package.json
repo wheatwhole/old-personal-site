@@ -20,7 +20,12 @@
   "homepage": "https://github.com/wheatwhole/wheatwhole.github.io#readme",
   "description": "",
   "dependencies": {
+    "@lucide/svelte": "^0.511.0",
+    "@tabler/icons-svelte": "^3.33.0",
     "@tailwindcss/cli": "^4.1.7",
     "tailwindcss": "^4.1.7"
+  },
+  "devDependencies": {
+    "@tsconfig/svelte": "^5.0.4"
   }
 }
