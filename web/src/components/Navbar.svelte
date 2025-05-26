@@ -2,16 +2,14 @@
   import About from "./NavItems/About.svelte";
   import { Tween } from "svelte/motion";
   import { cubicOut } from "svelte/easing";
-  import { setContext } from 'svelte'
+  import { setContext } from "svelte";
 
   let SizeDown = new Tween(0, {
     duration: 1000,
     easing: cubicOut,
   });
 
-  setContext('SizeDown', SizeDown)
-
-
+  setContext("SizeDown", SizeDown);
 </script>
 
 <div class="navbar-container">
