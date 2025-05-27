@@ -1,47 +1,70 @@
-name: Deploy build to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: ['main']
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: 'pages'
-  cancel-in-progress: false
 
 jobs:
+  build_site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
+        run: |
+          pnpm run build
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # this should match the `pages` adapter-static option. It default to 'build'
+          path: 'build/'
+
   deploy:
+    needs: build_site
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 20
-      - name: Install dependencies
-        run: npm ci
-      - name: switch to the right directory
-      - run: cd web
-      - name: Build the code
-        run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: 'build'
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
