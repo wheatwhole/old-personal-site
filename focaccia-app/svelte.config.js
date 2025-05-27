@@ -1,4 +1,4 @@
-import adapter from "@sveltejs/adapter-auto";
+import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -19,11 +19,11 @@ const config = {
       // the contents of a directory, not the directory itself
       "$components/*": "./src/components/*",
       "$static/*": "./static/*",
-      
+    },
+    paths: {
+      base: "/wheatwhole.github.io/focaccia-app",
     },
   },
 };
-
-config.paths = { base: process.argv.includes('dev') ? '' : "/wheatwhole.github.io" }
 
 export default config;
