@@ -23,14 +23,18 @@
     gap: 10px;
   }
 
+  .lovenote {
+    font-size: 13px;
+  }
+
   .lovenote::after {
-    content: "made with love by the focaccia.dev development team";
+    content: "made with love by the focaccia development team (me 😢)";
   }
 
   @media only screen and (max-width: 600px) {
     /* lazy ahh coding */
     .lovenote::after {
-      content: "made with love by focaccia.dev";
+      content: "made with love by the focaccia team (me 😢)";
     }
 
     .lovenote-container {

@@ -9,20 +9,22 @@
 
 <style>
   .pfp {
-    min-width: 9.375rem;
-    min-height: 9.375rem;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    max-height: 150px;
     border-radius: 360px;
     overflow: hidden;
   }
 
   .pfp > img {
-    width: 9.375rem;
-    height: 9.375rem;
+    width: 150px;
+    height: 150px;
   }
 
   .bio-title {
-    text-align: center;
-    color: var(--main-color);
+    color: var(--wheatwhole-color);
     user-select: none;
+    font-size: 30px;
   }
 </style>

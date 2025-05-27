@@ -1,25 +1,23 @@
-<script>
-  import About from "./NavItems/About.svelte";
+<script lang="ts">
+  import InfoIcon from "~icons/basil/info-rect-outline"; /* using Unplugin icons we can load icons at meowbalt speeds! */
+  import StarIcon from "~icons/basil/star-outline"; /* using Unplugin icons we can load icons at meowbalt speeds! */
+  import { onMount } from "svelte";
+
+  import NavTab from "./NavTab.svelte";
   import { Tween } from "svelte/motion";
   import { cubicOut } from "svelte/easing";
   import { setContext } from "svelte";
-
-  let SizeDown = new Tween(0, {
-    duration: 1000,
-    easing: cubicOut,
-  });
-
-  setContext("SizeDown", SizeDown);
 </script>
 
 <div class="navbar-container">
-  <div class="navbar-bull-horns"></div>
   <nav class="navbar">
     <div class="logo" aria-label="focaccia.dev logo">
       <img class="focaccia-logo" src="logo.png" alt="focaccia-logo" />
     </div>
     <nav class="navbar-tabs">
-      <About />
+      <NavTab name={"about?"} Icon={InfoIcon} href={"/"} />
+      <NavTab name={"me!"} Icon={StarIcon} href={"/wheatwhole"} />
+
     </nav>
   </nav>
 </div>
@@ -31,6 +29,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
+
     height: var(--navbar-height);
     bottom: 0;
     width: 100%;
@@ -38,18 +37,19 @@
 
   .navbar {
     height: 100%;
-    width: 100%;
-    max-width: fit-content;
+    width: fit-content;
     z-index: 5;
     order: 3;
     display: flex;
+    overflow-x: auto;
     flex-direction: row;
+    overflow-y: hidden;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     background-color: var(--nav-bg);
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    padding: 13px;
+    padding: 0px 3px;
   }
 
   .navbar-tabs {
@@ -57,20 +57,11 @@
     flex-direction: row;
     align-items: center;
     height: 100%;
+    padding: 5px;
+    overflow-x: scroll;
+    overflow-y: hidden;
     vertical-align: center;
-  }
-
-  :global(a[role="tab"]) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--navbar-highlight);
-    /* dark: color: black; */
-    font-size: 13px;
-    padding: 13px 20px;
-    opacity: 0.75;
-    text-decoration: none;
+    justify-content: space-evenly;
   }
 
   .logo {
@@ -125,10 +116,8 @@
     }
 
     .navbar {
-      position: relative;
       border-radius: 0rem;
-      max-width: 100%;
-      justify-content: center;
+      width: 100%;
     }
   }
 </style>

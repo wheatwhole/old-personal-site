@@ -29,3 +29,12 @@
     {/if}
   {/each}
 </div>
+
+<style>
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 18.75rem;
+  }
+</style>

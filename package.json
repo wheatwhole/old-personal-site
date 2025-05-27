@@ -26,6 +26,10 @@
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
-    "@tsconfig/svelte": "^5.0.4"
+    "@iconify/json": "^2.2.341",
+    "@tsconfig/svelte": "^5.0.4",
+    "unplugin-icons": "^22.1.0",
+    "vite": "^6.3.5",
+    "vite-plugin-entry-shaking": "^0.5.1"
   }
 }
