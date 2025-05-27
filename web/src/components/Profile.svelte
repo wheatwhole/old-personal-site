@@ -3,7 +3,7 @@
 </script>
 
 <div class="pfp">
-  <img src="{base}/pfps/{name}.webp" alt={name} />
+  <img src="/pfps/{name}.webp" alt={name} />
 </div>
 <h1 class="bio-title">{name}<span class="h300"></span></h1>
 
