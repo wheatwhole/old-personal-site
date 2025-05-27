@@ -24,6 +24,6 @@ const config = {
   },
 };
 
-config.paths = { base: process.argv.includes('dev') ? '' : "/wheatwhole.github.io/focaccia-app" }
+config.paths = { base: process.argv.includes('dev') ? '' : "/wheatwhole.github.io" }
 
 export default config;
