@@ -13,9 +13,9 @@ export default defineConfig({
     fs: {
       allow: [
         // your custom rules
-        '/web/src/changelogs/*',
+        '/web/src/changelog/*',
+        '/path/to/custom/allow_file.demo',
       ],
     },
   },
-})
 })

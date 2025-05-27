@@ -12,7 +12,7 @@
 <div class="navbar-container">
   <nav class="navbar">
     <div class="logo" aria-label="focaccia.dev logo">
-      <img class="focaccia-logo" src="logo.png" alt="focaccia-logo" />
+      <img class="focaccia-logo" src="{base}/logo.png" alt="focaccia-logo" />
     </div>
     <nav class="navbar-tabs">
       <NavTab name={"about?"} Icon={InfoIcon} href={"/"} />
