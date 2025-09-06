@@ -1,4 +1,4 @@
-# THIS SITE IS BEING MOVED TO FOCACCIA ORGANIZATION
+# moved
 ---
 # hi
 Im too tired to finish this come back later bro
